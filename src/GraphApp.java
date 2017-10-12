@@ -1,4 +1,3 @@
-
 public class GraphApp {
 	public static void main(String[] args){
 		
@@ -7,7 +6,6 @@ public class GraphApp {
 		theGraph.printMatrix("adjacency_matrix.txt");
 		System.out.println("Depth First Search Visits: ");
 		theGraph.depthFirstSearch();
-		theGraph.printDFS();
 		System.out.println("");
 		System.out.println("Breadth First Search Visits: ");
 		theGraph.breadthFirstSearch();
