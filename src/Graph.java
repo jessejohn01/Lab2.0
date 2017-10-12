@@ -12,15 +12,11 @@ public class Graph {
 	
 	Vertex[] vertexList = new Vertex[labelSize(filePathLabels)]; // Creates a vertexList the size of the files input.
 	int[][] adjacencyMatrix = new int[adjMatrixSizeX(adjacencyMatrixFilePath)][adjMatrixSizeY(adjacencyMatrixFilePath)]; // Create adj Matrix array with size from file
-	int[] depthFirstSearchOrder = new int[adjMatrixSizeX(adjacencyMatrixFilePath)];
-	int dfsNode = 0;
+	
 	
 	public Graph(){
 		readLabels(filePathLabels);
 		readAdjacencyMatrix(adjacencyMatrixFilePath);
-		for(int i =0; i < depthFirstSearchOrder.length; i++) {
-			depthFirstSearchOrder[i] = depthFirstSearchOrder.length;
-		}
 	}
 	
 	public void displayVertex(int vertexIndex){ //Displays the vertex at the index passed in.
@@ -131,7 +127,7 @@ public class Graph {
 			e.printStackTrace();
 		}
 		
-		char[] labelCharArray; //= new char[fullLabels.length()];//creates a char array size of the inputed string file.
+		char[] labelCharArray = new char[fullLabels.length()]; //creates a char array size of the inputed string file.
 		labelCharArray = fullLabels.toCharArray(); // fills the char array
 		for (int i = 0; i<labelCharArray.length;i++){ // Loops that creates vertexes in the vertex list with labels from char array.
 			Vertex v = new Vertex(labelCharArray[i]);
@@ -141,25 +137,8 @@ public class Graph {
 		
 	}
 	
-	public void depthFirstSearch(int dfsIndex){
-		depthFirstSearchOrder[dfsNode]= dfsIndex;
-		for(int i = 0; i < adjacencyMatrix[0].length; i++) {
-			if (vertexList[i].wasVisted == false && adjacencyMatrix[dfsIndex][i]== 1) {
-				vertexList[dfsIndex].wasVisted = true;
-				dfsNode++;
-				dfsIndex = i;
-				depthFirstSearch(dfsIndex);
-			}
-		}
-	}
-
-	public void printDFS(){
-		for(int i = 0; i < depthFirstSearchOrder.length; i++)
-		{
-			if(depthFirstSearchOrder[i] != depthFirstSearchOrder.length) {
-				System.out.println(vertexList[depthFirstSearchOrder[i]].getLabel());
-			}
-		}
+	public void depthFirstSearch(){
+		
 	}
 	
 	public void breadthFirstSearch(){
