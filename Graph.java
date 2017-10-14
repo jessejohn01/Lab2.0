@@ -141,6 +141,7 @@ public class Graph {
 	}
 
 	public void depthFirstSearch() {
+		System.out.println("Spaces indicate a separate branch.");
 		Stack s = new Stack();
 		Stack visitedOrder = new Stack();
 		int j = 0;
@@ -160,6 +161,7 @@ public class Graph {
 				if (!visitedOrder.empty()) {
 					j = (int) visitedOrder.peek();
 					visitedOrder.pop();
+					System.out.print(" ");
 				}
 
 				s.pop();
