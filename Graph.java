@@ -141,7 +141,6 @@ public class Graph {
 	}
 
 	public void depthFirstSearch() {
-		System.out.println("Spaces indicate a separate branch.");
 		Stack s = new Stack();
 		Stack visitedOrder = new Stack();
 		int j = 0;
@@ -161,7 +160,6 @@ public class Graph {
 				if (!visitedOrder.empty()) {
 					j = (int) visitedOrder.peek();
 					visitedOrder.pop();
-					System.out.print(" ");
 				}
 
 				s.pop();
@@ -192,6 +190,35 @@ public class Graph {
 			{
 				if (adjacencyMatrix[element][i] == 1 && !vertexList[i].wasVisted)
 				{
+					queue.add(i);
+					vertexList[i].wasVisted = true;
+				}
+				i++;
+			}
+		}
+		for (int x = 0; x < vertexList.length; x++) {
+			vertexList[x].wasVisted = false;
+		}
+	}
+
+	public void minimumSpanningTree() {
+		Queue queue = new LinkedList();
+		int i, element;
+
+		vertexList[0].wasVisted= true;
+		queue.add(0);
+
+		while (!queue.isEmpty())
+		{
+
+			element = (int)queue.remove();
+			i = 0;
+			while (i < adjacencyMatrix[0].length)
+			{
+				if (adjacencyMatrix[element][i] == 1 && !vertexList[i].wasVisted)
+				{
+					System.out.print(vertexList[element].getLabel());
+					System.out.print(vertexList[i].getLabel() + " ");
 					queue.add(i);
 					vertexList[i].wasVisted = true;
 				}
